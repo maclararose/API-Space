@@ -1,8 +1,9 @@
 class V1::ArticlesController < ApplicationController
   def index
-    articles = Article.all
+    articles = Article.all.page(params[:page])
+    total_articles = articles.count
 
-    render json: articles
+    paginate json: articles, per_page: 5
   end
 
   def view
