@@ -5,4 +5,8 @@ class ClientSpaceFlightNews
   def self.get_articles
     articles = HTTParty.get("#{URL}/articles")
   end
+
+  # def self.get_article(id)
+
+  # end
 end
