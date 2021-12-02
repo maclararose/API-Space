@@ -1,6 +1,10 @@
 # API-Space-Flight-News
 This is a challenge by [Coodesh](https://coodesh.com/)
 
+The project has been completed: 02/12/2021
+
+It's the consumption of the [API Space Flight News](https://api.spaceflightnewsapi.net/v3/documentation)
+
 # Starting :rocket:
 These instructions will allow you to get a copy of the project running on your local machine for development and testing purposes.
 
