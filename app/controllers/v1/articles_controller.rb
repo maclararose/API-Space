@@ -1,9 +1,9 @@
 class V1::ArticlesController < ApplicationController
   def index
-    articles = Article.all.page(1)
+    articles = Article.all.page(params[:page])
     total_articles = articles.count
 
-    paginate json: articles, per_page: 10
+    paginate json: articles, per_page: 5
   end
 
   def view
@@ -38,13 +38,5 @@ class V1::ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :url, :imageUrl, :newSite, :summary)
-  end
-
-  def page
-    @page ||= params(:page) || 1
-  end
-
-  def per_page
-    @per_page ||= params(:per_page) || 5
   end
 end
