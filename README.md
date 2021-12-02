@@ -57,6 +57,7 @@ And Done! You can see working in your machine in the address: 0.0.0.0:3000/v1
 
 # Author :black_nib:
 - __Maria Clara__ - Code and Documentation - [[LinkedIn](https://www.linkedin.com/in/mariaclarab/)]
+- Project presentation video: https://www.loom.com/share/23edb5b351ec4a9f89eed1c119854025
 
 # License :page_facing_up:
 This project is under license [[MIT](https://github.com/maclararose/API-Space/blob/main/LICENSE)] :round_pushpin:.
