@@ -43,4 +43,4 @@ And Done! You can edit the files.
 - __Maria Clara__ - Code and Documentation - [[LinkedIn](https://www.linkedin.com/in/mariaclarab/)]
 
 # License :page_facing_up:
-This project is under license [[MIT](https://github.com/maclararose/Gradie-Sign-Up-Page/blob/main/LICENSE.md)] :round_pushpin:.
+This project is under license [[MIT](https://github.com/maclararose/API-Space/blob/main/LICENSE)] :round_pushpin:.
