@@ -20,6 +20,9 @@ gem 'puma', '~> 5.0'
 # gem 'image_processing', '~> 1.2'
 
 gem 'httparty', '~> 0.20.0'
+gem 'kaminari'
+gem 'api-pagination'
+gem 'active_model_serializers'
 gem 'whenever', require: false
 
 # Reduces boot times through caching; required in config/boot.rb
