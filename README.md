@@ -10,11 +10,12 @@ These instructions will allow you to get a copy of the project running on your l
 - Ruby 2.7.2;
 - Rails 6;
 - Docker;
+- Postgresql;
 
 # Installation :wrench:
-The first step is to download the repository in your machine whit git or in zip file:
+The first step is to download the repository in your machine whit git:
 
-```
+```bash
 git init
 
 git clone https://github.com/maclararose/API-Space.git
@@ -28,13 +29,24 @@ If you use __Visual Studio Code__, to open the repository use in terminal:
 `code .`
 
 In terminal type:
-`rails s -p 3001`
+```bash
+$ docker-compose build -d
+$ docker-compose up
+$ docker exec -it api-space /bin/sh
+$# rails db:create
+$# rails db:migrate
+$# rake article_populate:create
+$# exit
+$
+```
 
-And Done! You can edit the files.
+And Done! You can see working in your machine in the address: 0.0.0.0:3000/v1
 
 # Done with :hammer: :
 - Ruby 2.7.2;
 - Rails 6;
+- Docker;
+- Postgresql;
 
 # Version :pushpin:
 1.0.1
