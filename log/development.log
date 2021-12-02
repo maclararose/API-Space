@@ -190,3 +190,601 @@ Completed 200 OK in 786ms (Views: 5.1ms | Allocations: 2525)
   [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "api_space_test"[0m
   [1m[35m (3302.6ms)[0m  [1m[35mCREATE DATABASE "api_space_development" ENCODING = 'utf8'[0m
   [1m[35m (1639.8ms)[0m  [1m[35mCREATE DATABASE "api_space_test" ENCODING = 'utf8'[0m
+  [1m[35m (571.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (266.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6096930857318196420)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20211201032702)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (259.9ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "featured" boolean, "title" character varying, "url" character varying, "imageUrl" character varying, "newSite" character varying, "summary" character varying, "publishedAt" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211201032702"]]
+  [1m[36mTRANSACTION (25.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-12-01 03:34:07.011529"], ["updated_at", "2021-12-01 03:34:07.011529"]]
+  [1m[36mTRANSACTION (24.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(6096930857318196420)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Create (1.2ms)[0m  [1m[32mINSERT INTO "articles" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "lalalalla"], ["created_at", "2021-12-01 03:36:00.647444"], ["updated_at", "2021-12-01 03:36:00.647444"]]
+  [1m[36mTRANSACTION (105.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6096930857318196420)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateLaunches (20211201033726)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (121.7ms)[0m  [1m[35mCREATE TABLE "launches" ("id" bigserial primary key, "provider" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211201033726"]]
+  [1m[36mTRANSACTION (30.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(6096930857318196420)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6096930857318196420)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateLaunches (20211201033726)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (382.1ms)[0m  [1m[35mDROP TABLE "launches"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (48.7ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20211201033726"]]
+  [1m[36mTRANSACTION (237.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(6096930857318196420)[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6096930857318196420)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20211201032702)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "articles"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20211201032702"]]
+  [1m[36mTRANSACTION (37.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6096930857318196420)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6096930857318196420)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20211201032702)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (128.9ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "featured" boolean, "title" character varying, "url" character varying, "imageUrl" character varying, "newSite" character varying, "summary" character varying, "publishedAt" character varying, "launches" character varying, "events" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211201032702"]]
+  [1m[36mTRANSACTION (25.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(6096930857318196420)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6096930857318196420)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20211201032702)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "articles"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20211201032702"]]
+  [1m[36mTRANSACTION (27.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(6096930857318196420)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6096930857318196420)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateArticles (20211201032702)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (170.9ms)[0m  [1m[35mCREATE TABLE "articles" ("id" bigserial primary key, "featured" boolean DEFAULT FALSE, "title" character varying, "url" character varying, "imageUrl" character varying, "newSite" character varying, "summary" character varying, "publishedAt" character varying, "launches" character varying, "events" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211201032702"]]
+  [1m[36mTRANSACTION (24.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6096930857318196420)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/v1" for ::1 at 2021-12-01 00:54:47 -0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ArticlesController#index as HTML
+Completed 200 OK in 857ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 4238)
+
+
+Started GET "/favicon.ico" for ::1 at 2021-12-01 00:54:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:4:in `block (2 levels) in <main>'
+  [1m[36mArticle Create (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Ola mundo"], ["created_at", "2021-12-01 03:59:14.136648"], ["updated_at", "2021-12-01 03:59:14.136648"]]
+  ↳ lib/tasks/article_populate.rake:4:in `block (2 levels) in <main>'
+  [1m[36mTRANSACTION (50.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:4:in `block (2 levels) in <main>'
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mArticle Create (0.5ms)[0m  [1m[32mINSERT INTO "articles" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Ola mundo"], ["created_at", "2021-12-01 04:02:12.068293"], ["updated_at", "2021-12-01 04:02:12.068293"]]
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mTRANSACTION (29.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mArticle Create (0.4ms)[0m  [1m[32mINSERT INTO "articles" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Ola mundo"], ["created_at", "2021-12-01 04:02:58.260841"], ["updated_at", "2021-12-01 04:02:58.260841"]]
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mTRANSACTION (65.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mArticle Create (159.7ms)[0m  [1m[32mINSERT INTO "articles" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Deu certo"], ["created_at", "2021-12-01 23:46:04.124411"], ["updated_at", "2021-12-01 23:46:04.124411"]]
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mTRANSACTION (28.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:5:in `block (2 levels) in <main>'
+  [1m[36mArticle Load (2.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.7ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Biden administration turns focus to space security"], ["url", "https://spacenews.com/biden-administration-turns-focus-to-space-security/"], ["imageUrl", "https://spacenews.com/wp-content/uploads/2021/12/Screen-Shot-2021-12-01-at-5.29.57-PM.png"], ["summary", "At the first meeting of the Biden administration’s National Space Council Dec. 1, Vice President Kamala Harris said a top concern is keeping space safe for military, civilian and commercial operations."], ["publishedAt", "2021-12-01T23:07:27.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.117218"], ["updated_at", "2021-12-02 00:46:59.117218"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (97.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.1ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Vice President Highlights STEM in First National Space Council Meeting"], ["url", "http://www.nasa.gov/press-release/vice-president-highlights-stem-in-first-national-space-council-meeting"], ["imageUrl", "https://www.nasa.gov/sites/default/files/thumbnails/image/51718386733_19346e4180_k.jpeg?itok=cv_Db4Tb"], ["summary", "Vice President Kamala Harris chaired the first National Space Council meeting of the Biden-Harris Administration Wednesday, Dec. 1 at the U.S. Institute of Peace in Washington."], ["publishedAt", "2021-12-01T23:07:00.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.288715"], ["updated_at", "2021-12-02 00:46:59.288715"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (25.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Kymeta plans to release OneWeb terminal by next summer"], ["url", "https://spacenews.com/kymeta-plans-to-release-oneweb-terminal-by-next-summer/"], ["imageUrl", "https://spacenews.com/wp-content/uploads/2021/09/OneWebTestingPic-scaled.jpg"], ["summary", "Antenna maker Kymeta announced a partnership Dec. 1 to jointly develop a flat panel, electronically steered user terminal for stationary land applications on OneWeb’s low Earth orbit broadband network."], ["publishedAt", "2021-12-01T22:57:27.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.325514"], ["updated_at", "2021-12-02 00:46:59.325514"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (31.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.3ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Space Council condemns “irresponsible” Russian ASAT test"], ["url", "https://spacenews.com/space-council-condemns-irresponsible-russian-asat-test/"], ["imageUrl", "https://spacenews.com/wp-content/uploads/2021/12/spacecouncil-dec21.jpg"], ["summary", "Administration officials used a National Space Council meeting to issue a new round of criticism of Russia’s antisatellite weapon test and call for a halt to future ASAT tests that create debris."], ["publishedAt", "2021-12-01T22:27:27.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.371427"], ["updated_at", "2021-12-02 00:46:59.371427"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (22.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.3ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Here’s why Elon Musk asked his SpaceX employees to work Thanksgiving"], ["url", "https://arstechnica.com/science/2021/12/heres-why-elon-musk-asked-his-spacex-employees-to-work-thanksgiving/"], ["imageUrl", "https://cdn.arstechnica.net/wp-content/uploads/2019/02/Raptor1.jpg"], ["summary", "A fully operational Starship solves many of SpaceX's problems."], ["publishedAt", "2021-12-01T16:17:56.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.407202"], ["updated_at", "2021-12-02 00:46:59.407202"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (23.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.5ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "White House releases space priorities framework"], ["url", "https://spacenews.com/white-house-releases-space-priorities-framework/"], ["imageUrl", "https://spacenews.com/wp-content/uploads/2021/09/E9pdEYvXEAg057x-scaled.jpeg"], ["summary", ""], ["publishedAt", "2021-12-01T16:17:55.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.442935"], ["updated_at", "2021-12-02 00:46:59.442935"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (23.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.2ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "NASA to Air VP Harris’ First National Space Council Meeting"], ["url", "http://www.nasa.gov/press-release/nasa-to-air-vp-harris-first-national-space-council-meeting"], ["imageUrl", "https://www.nasa.gov/sites/default/files/thumbnails/image/gsfc_20211105_2022-1529-0_003.jpg?itok=Nbm82940"], ["summary", "NASA will air live coverage of the first National Space Council Meeting held under the Biden-Harris Administration at 1:30 p.m. EST today, Wednesday, Dec. 1, from the U.S. Institute of Peace in Washington."], ["publishedAt", "2021-12-01T15:19:00.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.479772"], ["updated_at", "2021-12-02 00:46:59.479772"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (33.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.2ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "Planetary scientists are starting to get stirred up by Starship’s potential"], ["url", "https://arstechnica.com/science/2021/12/planetary-scientists-are-starting-to-get-stirred-up-by-starships-potential/"], ["imageUrl", "https://cdn.arstechnica.net/wp-content/uploads/2021/11/48953947006_02a6ed229b_k.jpg"], ["summary", "\"It could provide a revolutionary new way of exploring these worlds.\""], ["publishedAt", "2021-12-01T11:45:02.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.526235"], ["updated_at", "2021-12-02 00:46:59.526235"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (31.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.4ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "SpaceX grapples with Raptor production problems"], ["url", "https://spacenews.com/spacex-grapples-with-raptor-production-problems/"], ["imageUrl", "https://spacenews.com/wp-content/uploads/2021/12/raptors-superheavy.jpg"], ["summary", "Problems increasing production of the Raptor engines that power SpaceX’s Starship vehicle have led to personnel shakeups at the company and a warning from founder Elon Musk that the company risked “bankruptcy” if the company could not resolve them."], ["publishedAt", "2021-12-01T11:28:58.000Z"], ["launches", "[]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.572459"], ["updated_at", "2021-12-02 00:46:59.572459"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (23.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Create (1.3ms)[0m  [1m[32mINSERT INTO "articles" ("title", "url", "imageUrl", "summary", "publishedAt", "launches", "events", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["title", "SpaceX raises Falcon 9 rocket vertical for Starlink rideshare launch"], ["url", "https://www.teslarati.com/spacex-falcon-9-vertical-starlink-4-3-rideshare/"], ["imageUrl", "https://www.teslarati.com/wp-content/uploads/2019/11/Starlink-1-Falcon-9-B1048-LC-40-vertical-111019-SpaceX-1-fairing-crop.jpg"], ["summary", "SpaceX has raised Falcon 9 vertical for a record-breaking Starlink and rideshare mission known as Starlink Group 4 Launch 3 (4-3). According..."], ["publishedAt", "2021-12-01T10:09:19.000Z"], ["launches", "[{\"id\"=>\"56db9abd-41b8-41a3-9d6d-88e52460682b\", \"provider\"=>\"Launch Library 2\"}]"], ["events", "[]"], ["created_at", "2021-12-02 00:46:59.608157"], ["updated_at", "2021-12-02 00:46:59.608157"]]
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (23.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/article_populate.rake:9:in `block (3 levels) in <main>'
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (133.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "articles"[0m
+Started GET "/v1" for ::1 at 2021-12-01 21:52:57 -0300
+  [1m[35m (50.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/v1"):
+  
+Started GET "/favicon.ico" for ::1 at 2021-12-01 21:52:58 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/v1/articles" for ::1 at 2021-12-01 21:53:02 -0300
+Processing by V1::ArticlesController#index as HTML
+Completed 200 OK in 1021ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2359)
+
+
+Started GET "/v1" for ::1 at 2021-12-01 21:56:50 -0300
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant V1::ApplicationController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 21:58:48 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant V1::ApplicationController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 21:58:52 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::ApplicationController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 21:58:54 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::ApplicationController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 21:59:12 -0300
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant V1::ApplicationsController
+Did you mean?  ApplicationController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 21:59:14 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::ApplicationsController
+Did you mean?  ApplicationController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 22:01:38 -0300
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant V1::HomeController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 22:02:20 -0300
+  
+Zeitwerk::NameError (expected file /home/mariab/Documents/ruby/API-Space-local/app/controllers/v1/home_controller.rb to define constant V1::HomeController, but didn't):
+  
+zeitwerk (2.5.1) lib/zeitwerk/loader/callbacks.rb:25:in `on_file_autoloaded'
+zeitwerk (2.5.1) lib/zeitwerk/kernel.rb:28:in `block in require'
+zeitwerk (2.5.1) lib/zeitwerk/kernel.rb:27:in `tap'
+zeitwerk (2.5.1) lib/zeitwerk/kernel.rb:27:in `require'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:288:in `const_get'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:288:in `block in constantize'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:284:in `each'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:284:in `inject'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:284:in `constantize'
+activesupport (6.1.4.1) lib/active_support/dependencies/zeitwerk_integration.rb:19:in `constantize'
+actionpack (6.1.4.1) lib/action_dispatch/http/request.rb:93:in `controller_class_for'
+actionpack (6.1.4.1) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (6.1.4.1) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (6.1.4.1) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (6.1.4.1) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.4.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.4.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.4.1) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/v1" for ::1 at 2021-12-01 22:02:48 -0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+Zeitwerk::NameError (expected file /home/mariab/Documents/ruby/API-Space-local/app/controllers/v1/home_controller.rb to define constant V1::HomeController, but didn't):
+  
+zeitwerk (2.5.1) lib/zeitwerk/loader/callbacks.rb:25:in `on_file_autoloaded'
+zeitwerk (2.5.1) lib/zeitwerk/kernel.rb:28:in `block in require'
+zeitwerk (2.5.1) lib/zeitwerk/kernel.rb:27:in `tap'
+zeitwerk (2.5.1) lib/zeitwerk/kernel.rb:27:in `require'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:288:in `const_get'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:288:in `block in constantize'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:284:in `each'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:284:in `inject'
+activesupport (6.1.4.1) lib/active_support/inflector/methods.rb:284:in `constantize'
+activesupport (6.1.4.1) lib/active_support/dependencies/zeitwerk_integration.rb:19:in `constantize'
+actionpack (6.1.4.1) lib/action_dispatch/http/request.rb:93:in `controller_class_for'
+actionpack (6.1.4.1) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (6.1.4.1) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (6.1.4.1) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (6.1.4.1) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.4.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.4.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.4.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.4.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.4.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.4.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.4.1) lib/rails/engine.rb:539:in `call'
+puma (5.5.2) lib/puma/configuration.rb:249:in `call'
+puma (5.5.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.5.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.5.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.5.2) lib/puma/server.rb:447:in `process_client'
+puma (5.5.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/v1" for ::1 at 2021-12-01 22:02:51 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::HomeController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 22:02:54 -0300
+  
+ActionController::RoutingError (uninitialized constant V1::HomeController):
+  
+Started GET "/v1" for ::1 at 2021-12-01 22:03:40 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::HomeController#welcome as HTML
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 1961)
+
+
+Started GET "/v1/articles/1" for ::1 at 2021-12-01 22:04:30 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/v1/articles/1"):
+  
+Started GET "/v1/articles/1" for ::1 at 2021-12-01 22:35:05 -0300
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ArticlesController#view as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:9:in `view'
+Completed 200 OK in 116ms (Views: 0.7ms | ActiveRecord: 10.3ms | Allocations: 9253)
+
+
+Started GET "/v1/articles" for ::1 at 2021-12-01 22:35:11 -0300
+Processing by V1::ArticlesController#index as HTML
+Completed 200 OK in 1929ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 2289)
+
+
+Started GET "/v1/articles/13089" for ::1 at 2021-12-01 22:35:23 -0300
+Processing by V1::ArticlesController#view as HTML
+  Parameters: {"id"=>"13089"}
+  [1m[36mArticle Load (1.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 13089], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:9:in `view'
+Completed 404 Not Found in 14ms (ActiveRecord: 1.5ms | Allocations: 535)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=13089):
+  
+app/controllers/v1/articles_controller.rb:9:in `view'
+Started GET "/v1/articles/14" for ::1 at 2021-12-01 22:35:42 -0300
+Processing by V1::ArticlesController#view as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:9:in `view'
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 680)
+
+
+Started GET "/v1/articles/10" for ::1 at 2021-12-01 22:36:01 -0300
+Processing by V1::ArticlesController#view as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:9:in `view'
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 1.1ms | Allocations: 672)
+
+
+Started GET "/v1/articles" for ::1 at 2021-12-01 22:37:28 -0300
+Processing by V1::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/v1/articles_controller.rb:5:in `index'
+Completed 200 OK in 33ms (Views: 20.3ms | ActiveRecord: 9.3ms | Allocations: 7986)
+
+
+Started PUT "/v1/articles/1" for ::1 at 2021-12-01 22:53:28 -0300
+  
+ActionController::RoutingError (No route matches [PUT] "/v1/articles/1"):
+  
+Started GET "/v1/articles" for ::1 at 2021-12-01 22:53:48 -0300
+Processing by V1::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/v1/articles_controller.rb:5:in `index'
+Completed 200 OK in 109ms (Views: 107.2ms | ActiveRecord: 25.6ms | Allocations: 9681)
+
+
+Started PUT "/v1/article/1" for ::1 at 2021-12-01 22:53:55 -0300
+  
+ActionController::RoutingError (No route matches [PUT] "/v1/article/1"):
+  
+Started GET "/v1/articles/1" for ::1 at 2021-12-01 22:54:02 -0300
+Processing by V1::ArticlesController#view as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:9:in `view'
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 0.9ms | Allocations: 733)
+
+
+Started POST "/v1/articles/1" for ::1 at 2021-12-01 22:54:36 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/v1/articles/1"):
+  
+Started PUT "/v1/articles/1" for ::1 at 2021-12-01 22:54:48 -0300
+  
+ActionController::RoutingError (No route matches [PUT] "/v1/articles/1"):
+  
+Started PUT "/v1/articles/1" for ::1 at 2021-12-01 22:56:38 -0300
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ArticlesController#update as */*
+  Parameters: {"title"=>"Testando diretamente do insomnia", "id"=>"1", "article"=>{"title"=>"Testando diretamente do insomnia"}}
+  [1m[36mArticle Load (1.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:15:in `update'
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 7.0ms | Allocations: 8833)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/v1/articles_controller.rb:17:in `update'
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started PUT "/v1/articles/1" for ::1 at 2021-12-01 23:01:44 -0300
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ArticlesController#update as */*
+  Parameters: {"title"=>"Testando diretamente do insomnia", "id"=>"1", "article"=>{"title"=>"Testando diretamente do insomnia"}}
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:15:in `update'
+Completed 400 Bad Request in 22ms (ActiveRecord: 4.3ms | Allocations: 8788)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: articles
+Did you mean?  article
+               title
+               controller
+               action):
+  
+app/controllers/v1/articles_controller.rb:28:in `article_params'
+app/controllers/v1/articles_controller.rb:17:in `update'
+Started PUT "/v1/articles/1" for ::1 at 2021-12-01 23:02:14 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ArticlesController#update as */*
+  Parameters: {"title"=>"Testando diretamente do insomnia", "id"=>"1", "article"=>{"title"=>"Testando diretamente do insomnia"}}
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:15:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/articles_controller.rb:17:in `update'
+  [1m[36mArticle Update (59.2ms)[0m  [1m[33mUPDATE "articles" SET "title" = $1, "updated_at" = $2 WHERE "articles"."id" = $3[0m  [["title", "Testando diretamente do insomnia"], ["updated_at", "2021-12-02 02:02:14.629249"], ["id", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:17:in `update'
+  [1m[36mTRANSACTION (261.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/articles_controller.rb:17:in `update'
+Completed 200 OK in 356ms (Views: 0.7ms | ActiveRecord: 326.0ms | Allocations: 10596)
+
+
+Started GET "/v1/articles/1" for ::1 at 2021-12-01 23:02:21 -0300
+Processing by V1::ArticlesController#view as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:9:in `view'
+Completed 200 OK in 7ms (Views: 1.7ms | ActiveRecord: 0.6ms | Allocations: 657)
+
+
+Started POST "/v1/articles" for ::1 at 2021-12-01 23:12:13 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by V1::ArticlesController#create as */*
+  Parameters: {"title"=>"Criando uma API supinpa com a Lais", "article"=>{"title"=>"Criando uma API supinpa com a Lais"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/v1/articles_controller.rb:23:in `create'
+  [1m[36mArticle Create (0.6ms)[0m  [1m[32mINSERT INTO "articles" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Criando uma API supinpa com a Lais"], ["created_at", "2021-12-02 02:12:13.683001"], ["updated_at", "2021-12-02 02:12:13.683001"]]
+  ↳ app/controllers/v1/articles_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (22.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/v1/articles_controller.rb:23:in `create'
+Completed 200 OK in 44ms (Views: 0.7ms | ActiveRecord: 27.2ms | Allocations: 9806)
+
+
+Started GET "/v1/articles/15" for ::1 at 2021-12-01 23:12:18 -0300
+Processing by V1::ArticlesController#view as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:9:in `view'
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 1102)
+
+
+Started DELETE "/v1/articles/1" for ::1 at 2021-12-01 23:12:46 -0300
+Processing by V1::ArticlesController#delete as */*
+  Parameters: {"id"=>"1", "article"=>{}}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:29:in `delete'
+  [1m[36mArticle Destroy (32.7ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:31:in `delete'
+Completed 200 OK in 36ms (Views: 0.2ms | ActiveRecord: 33.0ms | Allocations: 909)
+
+
+Started GET "/v1/articles/1" for ::1 at 2021-12-01 23:12:51 -0300
+Processing by V1::ArticlesController#view as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:9:in `view'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms | Allocations: 514)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=1):
+  
+app/controllers/v1/articles_controller.rb:9:in `view'
+Started GET "/v1/articles/" for ::1 at 2021-12-01 23:12:56 -0300
+Processing by V1::ArticlesController#index as HTML
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/v1/articles_controller.rb:5:in `index'
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 1.0ms | Allocations: 2695)
+
+
+Started DELETE "/v1/articles/2" for ::1 at 2021-12-01 23:13:03 -0300
+Processing by V1::ArticlesController#delete as */*
+  Parameters: {"id"=>"2", "article"=>{}}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:29:in `delete'
+  [1m[36mArticle Destroy (55.8ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/v1/articles_controller.rb:31:in `delete'
+Completed 200 OK in 59ms (Views: 0.2ms | ActiveRecord: 56.0ms | Allocations: 875)
+
+
+Started DELETE "/v1/articles/3" for ::1 at 2021-12-01 23:13:07 -0300
+Processing by V1::ArticlesController#delete as */*
+  Parameters: {"id"=>"3", "article"=>{}}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:29:in `delete'
+  [1m[36mArticle Destroy (52.5ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/v1/articles_controller.rb:31:in `delete'
+Completed 200 OK in 58ms (Views: 0.5ms | ActiveRecord: 52.8ms | Allocations: 875)
+
+
+Started DELETE "/v1/articles/4" for ::1 at 2021-12-01 23:13:11 -0300
+Processing by V1::ArticlesController#delete as */*
+  Parameters: {"id"=>"4", "article"=>{}}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:29:in `delete'
+  [1m[36mArticle Destroy (51.6ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/v1/articles_controller.rb:31:in `delete'
+Completed 200 OK in 55ms (Views: 0.2ms | ActiveRecord: 52.0ms | Allocations: 896)
+
+
+Started DELETE "/v1/articles/15" for ::1 at 2021-12-01 23:13:20 -0300
+Processing by V1::ArticlesController#delete as */*
+  Parameters: {"id"=>"15", "article"=>{}}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/v1/articles_controller.rb:29:in `delete'
+  [1m[36mArticle Destroy (116.6ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 15]]
+  ↳ app/controllers/v1/articles_controller.rb:31:in `delete'
+Completed 200 OK in 120ms (Views: 0.3ms | ActiveRecord: 116.9ms | Allocations: 875)
+
+
+Started GET "/v1/articles/" for ::1 at 2021-12-01 23:13:23 -0300
+Processing by V1::ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/controllers/v1/articles_controller.rb:5:in `index'
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.6ms | Allocations: 2200)
+
+
